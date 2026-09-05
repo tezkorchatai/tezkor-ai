@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-
   if (req.method !== "POST") {
     return res.status(405).json({
       error: "Method not allowed"
@@ -7,7 +6,6 @@ export default async function handler(req, res) {
   }
 
   try {
-
     const { message } = req.body;
 
     if (!message) {
@@ -25,15 +23,13 @@ export default async function handler(req, res) {
     }
 
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/model:gemini-3.7-flash"
-      :generateContent?key=" + apiKey,
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=" +
+        apiKey,
       {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json"
         },
-
         body: JSON.stringify({
           contents: [
             {
@@ -61,14 +57,12 @@ export default async function handler(req, res) {
       "Javob topilmadi.";
 
     return res.status(200).json({
-      reply: reply
+      reply
     });
 
   } catch (error) {
-
     return res.status(500).json({
       error: error.message || "Server xatosi"
     });
-
   }
 }
